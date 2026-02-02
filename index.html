@@ -18,11 +18,14 @@
             --bg: #810e56;             
             --shape-cyan: #70cddf;     
             --shape-dark: #560b49;     
-            --card: rgba(255, 255, 255, 0.08); 
+            
+            /* COR DO CARTÃO (Igualamos ao da tabela de planos: Sólido) */
+            --card: rgba(86, 11, 73, 0.9); 
+            
             --text: #ffffff;           
             --accent: #ffffff;         
             --hover-light: #ffffff;    
-            --glass-border: rgba(255, 255, 255, 0.15);
+            --card-border: rgba(255, 255, 255, 0.15);
         }
 
         body { 
@@ -62,9 +65,8 @@
             justify-content: center; 
             align-items: center;
             transition: 0.3s ease; 
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--card-border);
+            /* Sem efeito de vidro (blur) para ficar igual aos Planos */
             cursor: pointer;
             
             /* Preparação para animação via JS */
@@ -77,8 +79,8 @@
         .card:hover { 
             transform: translateY(-5px); 
             border-color: var(--hover-light); 
-            background: rgba(255, 255, 255, 0.12); 
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background: rgba(110, 20, 95, 1); /* Um pouco mais claro no hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         .full { grid-column: span 2; }
@@ -91,12 +93,12 @@
             background: linear-gradient(45deg, #aaa, #ddd); 
             margin-bottom: 15px; 
             object-fit: cover; 
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.2);
         }
 
         h1 { font-size: 1.5rem; margin: 5px 0; font-weight: 700; text-align: center;}
         
-        p { font-size: 0.9rem; opacity: 0.8; text-align: center; margin-bottom: 10px; font-weight: 400; display: flex; align-items: center; gap: 6px; justify-content: center; }
+        p { font-size: 0.9rem; opacity: 0.9; text-align: center; margin-bottom: 10px; font-weight: 400; display: flex; align-items: center; gap: 6px; justify-content: center; }
         
         .label { font-weight: 600; font-size: 0.85rem; color: var(--accent); margin-top: 8px; text-align: center;}
 
@@ -117,7 +119,7 @@
         </a>
 
         <a href="" class="card full" id="link-planos">
-            <i class="fa-solid fa-clipboard-list" style="font-size: 1.5rem;"></i>
+            <i class="fa-solid fa-clipboard-list" style="font-size: 2rem;"></i>
             <span class="label">Planos e Coberturas</span>
         </a>
 
@@ -138,29 +140,20 @@
     </div>
 
     <script>
-        // ==========================================
-        // ÁREA DE DADOS DA COLABORADORA
-        // ==========================================
         const colaborador = {
             nome: "Juliana Luz",
             cargo: "Comercial",
             
-            // Link do LinkedIn Pessoal (torna o card do topo clicável)
             linkedinPessoal: "https://www.linkedin.com/in/juliana-luz-22225aa7/",
             
-            // --- MUDANÇA AQUI: Link para o arquivo interno ---
+            // Link para a página de planos
             linkPlanos: "planos.html", 
             
-            // Foto VAZIA (Vai usar ícone genérico)
+            // Foto VAZIA
             fotoUrl: "", 
             
-            // WhatsApp
             whatsapp: "5518981570505", 
-            
-            // Instagram
             instagram: "https://www.instagram.com/uniodontoprudente/", 
-            
-            // Buscador Dentista
             buscaDentista: "https://seguro.fisistemas.com.br/EncontreSeuDentista/pesquisa;s=336017"
         };
 
@@ -168,12 +161,10 @@
         // LÓGICA DO SISTEMA
         // ==========================================
         
-        // 1. Preenche Textos
         document.title = `${colaborador.nome} | Contato`;
         document.getElementById('nome-colaborador').innerText = colaborador.nome;
         document.getElementById('cargo-colaborador').innerText = colaborador.cargo;
         
-        // Configura Link do Perfil
         const cardProfile = document.getElementById('card-profile');
         const iconProfile = document.getElementById('icone-linkedin-perfil');
         if(colaborador.linkedinPessoal) {
@@ -185,7 +176,6 @@
             iconProfile.style.display = 'none';
         }
 
-        // 2. Carrega Foto ou Ícone Genérico
         const imgElement = document.getElementById('foto-perfil');
         if (colaborador.fotoUrl && colaborador.fotoUrl.length > 10) {
             imgElement.src = colaborador.fotoUrl;
@@ -197,7 +187,6 @@
             cardProfile.insertBefore(divIcon, cardProfile.children[0]);
         }
 
-        // 3. Configura Botões
         const configBtn = (id, link, prefix = '') => {
             const el = document.getElementById(id);
             if(link) el.href = prefix + link;
@@ -207,11 +196,8 @@
         configBtn('link-whatsapp', colaborador.whatsapp, 'https://wa.me/');
         configBtn('link-instagram', colaborador.instagram);
         configBtn('link-dentista', colaborador.buscaDentista);
-        
-        // Configura o botão Planos (Sem prefixo, pois é arquivo local)
         configBtn('link-planos', colaborador.linkPlanos);
 
-        // 4. Animação
         const cards = document.querySelectorAll('.card');
         cards.forEach((card, index) => {
             if(!card.classList.contains('hidden')){
