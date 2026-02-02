@@ -96,8 +96,7 @@
 
         h1 { font-size: 1.5rem; margin: 5px 0; font-weight: 700; text-align: center;}
         
-        /* Ajuste para o texto do cargo + ícone pequeno */
-        p { font-size: 0.9rem; opacity: 0.8; text-align: center; margin-bottom: 10px; font-weight: 400; display: flex; align-items: center; gap: 6px; }
+        p { font-size: 0.9rem; opacity: 0.8; text-align: center; margin-bottom: 10px; font-weight: 400; display: flex; align-items: center; gap: 6px; justify-content: center; }
         
         .label { font-weight: 600; font-size: 0.85rem; color: var(--accent); margin-top: 8px; text-align: center;}
 
@@ -113,14 +112,14 @@
             <h1 id="nome-colaborador">...</h1>
             <p>
                 <span id="cargo-colaborador">...</span> 
-                <i class="fa-brands fa-linkedin" style="font-size: 0.9em; opacity: 0.7;"></i>
+                <i class="fa-brands fa-linkedin" id="icone-linkedin-perfil" style="font-size: 0.9em; opacity: 0.7; display: none;"></i>
             </p>
         </a>
 
-        <div class="card full" id="btn-save-contact" onclick="gerarVcard()">
-            <i class="fa-solid fa-address-card" style="font-size: 1.5rem;"></i>
-            <span class="label">Salvar Contato</span>
-        </div>
+        <a href="" class="card full" id="link-planos">
+            <i class="fa-solid fa-clipboard-list" style="font-size: 1.5rem;"></i>
+            <span class="label">Planos e Coberturas</span>
+        </a>
 
         <a href="" class="card" target="_blank" id="link-whatsapp">
             <i class="fa-brands fa-whatsapp" style="font-size: 2rem;"></i>
@@ -140,26 +139,28 @@
 
     <script>
         // ==========================================
-        // ÁREA DE DADOS DO COLABORADOR
+        // ÁREA DE DADOS DA COLABORADORA
         // ==========================================
         const colaborador = {
-            nome: "Felipe Andrigo",
-            cargo: "Estagiário em Gestão de Marketing",
-            email: "felipe.andrigo@exemplo.com.br",
+            nome: "Juliana Luz",
+            cargo: "Comercial",
             
-            // Link do seu LinkedIn Pessoal (Vai no Card do Topo)
-            linkedinPessoal: "https://www.linkedin.com/in/felipe-alves-325a4121a/",
+            // Link do LinkedIn Pessoal (torna o card do topo clicável)
+            linkedinPessoal: "https://www.linkedin.com/in/juliana-luz-22225aa7/",
             
-            // Foto do LinkedIn
-            fotoUrl: "https://media.licdn.com/dms/image/v2/D4D03AQEKm9mgWnCChw/profile-displayphoto-crop_800_800/B4DZd95TyVGgAU-/0/1750163865284?e=1771459200&v=beta&t=7uT3OeC28MjI6gmcFlVmcV3pL0TQIKC-6f9NsM8RaRE", 
+            // --- MUDANÇA AQUI: Link para o arquivo interno ---
+            linkPlanos: "planos.html", 
+            
+            // Foto VAZIA (Vai usar ícone genérico)
+            fotoUrl: "", 
             
             // WhatsApp
-            whatsapp: "5518996475746", 
+            whatsapp: "5518981570505", 
             
-            // Instagram Uniodonto
+            // Instagram
             instagram: "https://www.instagram.com/uniodontoprudente/", 
             
-            // Buscador de Dentistas
+            // Buscador Dentista
             buscaDentista: "https://seguro.fisistemas.com.br/EncontreSeuDentista/pesquisa;s=336017"
         };
 
@@ -167,22 +168,24 @@
         // LÓGICA DO SISTEMA
         // ==========================================
         
-        // 1. Preenche Textos e Links do Perfil
+        // 1. Preenche Textos
         document.title = `${colaborador.nome} | Contato`;
         document.getElementById('nome-colaborador').innerText = colaborador.nome;
         document.getElementById('cargo-colaborador').innerText = colaborador.cargo;
         
-        // Configura o link do Card de Perfil
+        // Configura Link do Perfil
         const cardProfile = document.getElementById('card-profile');
+        const iconProfile = document.getElementById('icone-linkedin-perfil');
         if(colaborador.linkedinPessoal) {
             cardProfile.href = colaborador.linkedinPessoal;
+            iconProfile.style.display = 'inline-block'; 
         } else {
-            // Se não tiver link, remove o comportamento de clique
             cardProfile.removeAttribute('href');
             cardProfile.style.cursor = 'default';
+            iconProfile.style.display = 'none';
         }
 
-        // 2. Carrega Foto
+        // 2. Carrega Foto ou Ícone Genérico
         const imgElement = document.getElementById('foto-perfil');
         if (colaborador.fotoUrl && colaborador.fotoUrl.length > 10) {
             imgElement.src = colaborador.fotoUrl;
@@ -194,7 +197,7 @@
             cardProfile.insertBefore(divIcon, cardProfile.children[0]);
         }
 
-        // 3. Configura Botões Inferiores
+        // 3. Configura Botões
         const configBtn = (id, link, prefix = '') => {
             const el = document.getElementById(id);
             if(link) el.href = prefix + link;
@@ -204,8 +207,11 @@
         configBtn('link-whatsapp', colaborador.whatsapp, 'https://wa.me/');
         configBtn('link-instagram', colaborador.instagram);
         configBtn('link-dentista', colaborador.buscaDentista);
+        
+        // Configura o botão Planos (Sem prefixo, pois é arquivo local)
+        configBtn('link-planos', colaborador.linkPlanos);
 
-        // 4. Animação em Cascata
+        // 4. Animação
         const cards = document.querySelectorAll('.card');
         cards.forEach((card, index) => {
             if(!card.classList.contains('hidden')){
@@ -213,18 +219,6 @@
                 card.classList.add('visible');
             }
         });
-
-        // 5. Gerar vCard
-        function gerarVcard() {
-            // Para o vCard, usamos o link do LinkedIn Pessoal se houver, ou Insta
-            const socialLink = colaborador.linkedinPessoal || colaborador.instagram;
-            
-            const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:${colaborador.nome}\nTITLE:${colaborador.cargo}\nTEL;TYPE=CELL:${colaborador.whatsapp}\nEMAIL:${colaborador.email}\nURL:${socialLink}\nEND:VCARD`;
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(new Blob([vcard], { type: 'text/vcard' }));
-            link.download = `${colaborador.nome}.vcf`;
-            link.click();
-        }
     </script>
 </body>
 </html>
