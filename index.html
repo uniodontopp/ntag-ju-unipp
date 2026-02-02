@@ -19,13 +19,13 @@
             --shape-cyan: #70cddf;     
             --shape-dark: #560b49;     
             
-            /* COR DO CARTÃO (Igualamos ao da tabela de planos: Sólido) */
+            /* --- MUDANÇA VISUAL: Roxo Escuro Sólido --- */
             --card: rgba(86, 11, 73, 0.9); 
             
             --text: #ffffff;           
             --accent: #ffffff;         
             --hover-light: #ffffff;    
-            --card-border: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.15);
         }
 
         body { 
@@ -65,8 +65,11 @@
             justify-content: center; 
             align-items: center;
             transition: 0.3s ease; 
-            border: 1px solid var(--card-border);
-            /* Sem efeito de vidro (blur) para ficar igual aos Planos */
+            border: 1px solid var(--glass-border);
+            
+            /* REMOVIDO O BLUR PARA FICAR SÓLIDO */
+            /* backdrop-filter: blur(15px); */
+            
             cursor: pointer;
             
             /* Preparação para animação via JS */
@@ -79,7 +82,8 @@
         .card:hover { 
             transform: translateY(-5px); 
             border-color: var(--hover-light); 
-            background: rgba(110, 20, 95, 1); /* Um pouco mais claro no hover */
+            /* MUDANÇA NO HOVER: Roxo um pouco mais claro e vivo */
+            background: rgba(110, 20, 95, 1); 
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
@@ -98,6 +102,7 @@
 
         h1 { font-size: 1.5rem; margin: 5px 0; font-weight: 700; text-align: center;}
         
+        /* Ajuste para o texto do cargo + ícone pequeno */
         p { font-size: 0.9rem; opacity: 0.9; text-align: center; margin-bottom: 10px; font-weight: 400; display: flex; align-items: center; gap: 6px; justify-content: center; }
         
         .label { font-weight: 600; font-size: 0.85rem; color: var(--accent); margin-top: 8px; text-align: center;}
@@ -149,8 +154,8 @@
             // Link para a página de planos
             linkPlanos: "planos.html", 
             
-            // Foto VAZIA
-            fotoUrl: "", 
+            // --- FOTO DA JULIANA ADICIONADA ---
+            fotoUrl: "https://media.licdn.com/dms/image/v2/D5603AQEzn5viDpWM6Q/profile-displayphoto-crop_800_800/B56Zweu796HwAI-/0/1770042148833?e=1771459200&v=beta&t=Q1l0IebUptKKy9rSyrEDuHnIfki2aY9Mx96wiejpK2Q", 
             
             whatsapp: "5518981570505", 
             instagram: "https://www.instagram.com/uniodontoprudente/", 
