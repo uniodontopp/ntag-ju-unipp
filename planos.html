@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow"> 
+    <title>Nossos Planos | Uniodonto</title> 
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Georama:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* MESMA IDENTIDADE VISUAL DO CARTÃO */
+        :root {
+            --bg: #810e56;             
+            --shape-cyan: #70cddf;     
+            --shape-dark: #560b49;     
+            --card: rgba(255, 255, 255, 0.08); 
+            --text: #ffffff;           
+            --glass-border: rgba(255, 255, 255, 0.15);
+        }
+
+        body { 
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 0% 0%, var(--shape-cyan) 0%, var(--shape-cyan) 35%, transparent 35.1%),
+                radial-gradient(circle at 80% 110%, var(--shape-dark) 0%, var(--shape-dark) 50%, transparent 50.1%);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: var(--text); 
+            font-family: 'Georama', sans-serif;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0;
+        }
+
+        .container { 
+            max-width: 400px; 
+            width: 90%; 
+            padding: 20px;
+        }
+
+        h1 { text-align: center; margin-bottom: 25px; }
+
+        .plan-card { 
+            background: var(--card);   
+            border-radius: 20px; 
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .plan-card:hover { transform: scale(1.02); background: rgba(255,255,255,0.15); }
+        
+        .icon-box {
+            width: 50px; height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .details h2 { margin: 0; font-size: 1.1rem; }
+        .details p { margin: 5px 0 0; font-size: 0.85rem; opacity: 0.8; }
+
+        .btn-voltar {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .btn-voltar:hover { color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="javascript:history.back()" class="btn-voltar" style="margin-top: 0; margin-bottom: 20px; text-align: left;">
+            <i class="fa-solid fa-arrow-left"></i> Voltar
+        </a>
+
+        <h1>Planos Disponíveis</h1>
+
+        <a href="#" class="plan-card">
+            <div class="icon-box"><i class="fa-solid fa-user"></i></div>
+            <div class="details">
+                <h2>Pessoa Física</h2>
+                <p>Cobertura completa para você e sua família.</p>
+            </div>
+            <i class="fa-solid fa-chevron-right" style="margin-left: auto; opacity: 0.5;"></i>
+        </a>
+
+        <a href="#" class="plan-card">
+            <div class="icon-box"><i class="fa-solid fa-building"></i></div>
+            <div class="details">
+                <h2>Empresarial</h2>
+                <p>Soluções corporativas para sua equipe.</p>
+            </div>
+            <i class="fa-solid fa-chevron-right" style="margin-left: auto; opacity: 0.5;"></i>
+        </a>
+
+        <a href="#" class="plan-card">
+            <div class="icon-box"><i class="fa-solid fa-child"></i></div>
+            <div class="details">
+                <h2>Odonto Kids</h2>
+                <p>Especializado para crianças.</p>
+            </div>
+            <i class="fa-solid fa-chevron-right" style="margin-left: auto; opacity: 0.5;"></i>
+        </a>
+
+    </div>
+
+</body>
+</html>
