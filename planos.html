@@ -14,12 +14,12 @@
     <style>
         /* --- CONFIGURAÇÕES VISUAIS --- */
         :root {
-            /* 1. O FUNDO UNIODONTO */
+            /* 1. FUNDO GERAL (Identidade Uniodonto) */
             --bg-vinho: #810e56;     
             --shape-cyan: #70cddf;     
             --shape-dark: #560b49; 
             
-            /* 2. CORES DOS PLANOS */
+            /* 2. CORES DOS TEXTOS (Escuros, pois o card é branco) */
             --text-dark: #490c33; 
             --check-color: #490c33; 
             
@@ -40,6 +40,7 @@
 
         body { 
             background-color: var(--bg-vinho);
+            /* Fundo com degradê que você gostou */
             background-image: 
                 radial-gradient(circle at 0% 0%, var(--shape-cyan) 0%, var(--shape-cyan) 35%, transparent 35.1%),
                 radial-gradient(circle at 80% 110%, var(--shape-dark) 0%, var(--shape-dark) 50%, transparent 50.1%);
@@ -60,27 +61,27 @@
             width: 100%; 
         }
 
-        /* Botão Voltar (SÓLIDO BRANCO) */
+        /* Botão Voltar (Branco Sólido) */
         .btn-voltar {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             margin-bottom: 20px;
-            color: var(--text-dark); /* Texto escuro para contraste */
+            color: var(--text-dark); 
             text-decoration: none;
             font-weight: 700;
-            background: #ffffff;     /* Fundo branco sólido */
+            background: #ffffff;
             padding: 10px 20px;
             border-radius: 30px;
             transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Sombra suave */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         .btn-voltar:hover { 
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         }
 
-        /* --- ESTRUTURA DOS CARDS --- */
+        /* --- ESTRUTURA DOS CARDS (BRANCOS) --- */
         .plan-row {
             display: flex;
             border-radius: 25px;
@@ -88,7 +89,7 @@
             margin-bottom: 30px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
             position: relative; 
-            background: white; 
+            background: white; /* Volta a ser branco */
         }
 
         .plan-banner {
@@ -263,7 +264,8 @@
                         </div>
                         <div>
                             <li><i class="fa-solid fa-check"></i> Cirurgias bucais (Extrações de qualquer tipo de dente)</li>
-                            </div>
+                            <li><i class="fa-solid fa-check"></i> Prótese (coroas provisórias e coroas metálicas)</li>
+                        </div>
                     </ul>
                 </div>
                 <div class="plan-footer">
