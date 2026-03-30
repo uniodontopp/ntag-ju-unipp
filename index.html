@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow"> 
-    <title>Cartão Digital</title> 
+    <title>Cartão Digital - Juliana Luz</title> 
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,6 @@
             --shape-cyan: #70cddf;     
             --shape-dark: #560b49;     
             
-            /* --- MUDANÇA VISUAL: Roxo Escuro Sólido --- */
             --card: rgba(86, 11, 73, 0.9); 
             
             --text: #ffffff;           
@@ -66,13 +65,7 @@
             align-items: center;
             transition: 0.3s ease; 
             border: 1px solid var(--glass-border);
-            
-            /* REMOVIDO O BLUR PARA FICAR SÓLIDO */
-            /* backdrop-filter: blur(15px); */
-            
             cursor: pointer;
-            
-            /* Preparação para animação via JS */
             opacity: 0; 
             transform: translateY(20px);
         }
@@ -82,7 +75,6 @@
         .card:hover { 
             transform: translateY(-5px); 
             border-color: var(--hover-light); 
-            /* MUDANÇA NO HOVER: Roxo um pouco mais claro e vivo */
             background: rgba(110, 20, 95, 1); 
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
@@ -101,10 +93,7 @@
         }
 
         h1 { font-size: 1.5rem; margin: 5px 0; font-weight: 700; text-align: center;}
-        
-        /* Ajuste para o texto do cargo + ícone pequeno */
         p { font-size: 0.9rem; opacity: 0.9; text-align: center; margin-bottom: 10px; font-weight: 400; display: flex; align-items: center; gap: 6px; justify-content: center; }
-        
         .label { font-weight: 600; font-size: 0.85rem; color: var(--accent); margin-top: 8px; text-align: center;}
 
         @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
@@ -148,24 +137,18 @@
         const colaborador = {
             nome: "Juliana Luz",
             cargo: "Comercial",
-            
             linkedinPessoal: "https://www.linkedin.com/in/juliana-luz-22225aa7/",
-            
-            // Link para a página de planos
             linkPlanos: "planos.html", 
             
-            // --- FOTO DA JULIANA ADICIONADA ---
-            fotoUrl: "https://media.licdn.com/dms/image/v2/D5603AQEzn5viDpWM6Q/profile-displayphoto-crop_800_800/B56Zweu796HwAI-/0/1770042148833?e=1771459200&v=beta&t=Q1l0IebUptKKy9rSyrEDuHnIfki2aY9Mx96wiejpK2Q", 
+            // --- CONCEITO FIXO (IGUAL DO OTIAI) ---
+            fotoUrl: "https://lh3.googleusercontent.com/d/1yLGfrJGYXaZxJAGK29qMHwU7-83jsmj_", 
             
             whatsapp: "5518981570505", 
             instagram: "https://www.instagram.com/uniodontoprudente/", 
             buscaDentista: "https://seguro.fisistemas.com.br/EncontreSeuDentista/pesquisa;s=336017"
         };
 
-        // ==========================================
         // LÓGICA DO SISTEMA
-        // ==========================================
-        
         document.title = `${colaborador.nome} | Contato`;
         document.getElementById('nome-colaborador').innerText = colaborador.nome;
         document.getElementById('cargo-colaborador').innerText = colaborador.cargo;
